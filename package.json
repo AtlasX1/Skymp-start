@@ -1,0 +1,51 @@
+{
+	"name": "skyrim-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "gamemode.js",
+	"scripts": {
+		"start": ".\\skymp5-server.exe",
+		"launch": "..\\SkyMPLauncher.exe",
+		"game": "'..\\The Elder Scrolls V Skyrim - Special Edition\\skse64_loader.exe'",
+		"serve": "tsc --noEmit && parcel serve src/index.ts --out-dir ./ --out-file gamemode.js --no-source-maps --no-cache --target node",
+		"build": "tsc --noEmit && parcel build src/index.ts --out-dir ./ --out-file gamemode.js --no-source-maps --no-minify --no-cache --target node",
+		"prebuild:html": "rimraf ./SkyrimData/ui",
+		"serve:html": "npm run prebuild:html && parcel serve ./html/index.html --out-dir ./SkyrimData/ui --no-source-maps --no-cache",
+		"build:html": "parcel build ./html/*.html --out-dir ./SkyrimData/ui --no-source-maps --no-cache",
+		"lint": "tsc --noEmit",
+		"refreshGitignore": "git rm -r --cached . && git add . && git commit -m \".gitignore is now working\"",
+		"tsc:watch": "tsc --p tsconfig.json -w",
+		"tsc:build": "tsc --p tsconfig.json",
+		"gitignore:refresh": "git rm -r --cached . && git add . && git commit -m \".gitignore is now working\"",
+		"docs": "typedoc --theme ./node_modules/typedoc-neo-theme/bin/default --excludeExternals --hideGenerator --out docs src",
+		"docs1": "typedoc --json api.json src --excludeExternals",
+		"docs2": "type2docfx api.json yml",
+		"docs3": "docfx docfx.json --serve"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^14.14.20",
+		"parcel": "^1.12.4",
+		"parcel-bundler": "^1.12.4",
+		"parcel-plugin-wrapper": "^0.2.3",
+		"posthtml-modules": "^0.6.4",
+		"prepend": "^1.0.2",
+		"rimraf": "^3.0.2",
+		"sass": "^1.32.4",
+		"tsconfig-paths": "^3.9.0",
+		"typedoc": "^0.20.20",
+		"typedoc-neo-theme": "^1.1.0",
+		"typescript": "^4.1.3"
+	},
+	"dependencies": {},
+	"prettier": {
+		"bracketSpacing": true,
+		"printWidth": 120,
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 2,
+		"useTabs": true
+	}
+}
