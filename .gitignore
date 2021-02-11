@@ -90,6 +90,8 @@ html
 firebase.json
 
 #docs
+7za.exe
+README
 docs
 docfx.json
 yml

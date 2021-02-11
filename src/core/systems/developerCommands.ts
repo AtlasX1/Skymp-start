@@ -6,8 +6,6 @@ import { SpawnPoint, SpawnPointKeys, spawnSystem } from './spawnSystem';
 import { inventorySystem } from './inventorySystem';
 import { CTX } from '../platform';
 import { cocSystem } from './cocSystem';
-import { SatietySystem } from '../../HIVE/systems';
-import { professionSystem } from '../../HIVE/systems/professionsSystem';
 
 declare const mp: MP;
 declare const ctx: CTX;
@@ -185,17 +183,6 @@ export const initDevCommands = () => {
 		switch (msg.type) {
 			case 'dev-additem':
 				inventorySystem.addItem(pcFormId, +msgData.id, msgData.count ? +msgData.count : 1);
-				break;
-
-			case 'dev-satiety-level':
-				const currentSatiety = SatietySystem.get(pcFormId);
-				SatietySystem.set(pcFormId, currentSatiety + msgData.reduce);
-				break;
-
-			case 'dev-delete-profession':
-				const currentProfession = professionSystem.getFromServer(pcFormId);
-				if (currentProfession?.name === undefined) return;
-				professionSystem.delete(pcFormId, currentProfession.name, true);
 				break;
 
 			case 'dev-coc-zone':
